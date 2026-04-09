@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using mqttpetproject.Application.Abstractions.Persistence;
-using mqttpetproject.Application.Exceptions;
 using mqttpetproject.Domain.Entities;
+using mqttpetproject.Domain.Exceptions;
 
 namespace mqttpetproject.Infrastructure.Persistence.Repositories;
 

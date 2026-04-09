@@ -4,7 +4,7 @@ using mqttpetproject.Application.Abstractions.Persistence;
 using mqttpetproject.Application.Abstractions.Services;
 using mqttpetproject.Application.Abstractions.Validation;
 using mqttpetproject.Application.DTOs;
-using mqttpetproject.Application.Exceptions;
+using mqttpetproject.Domain.Exceptions;
 using mqttpetproject.Domain.Entities;
 
 namespace mqttpetproject.Application.Services;

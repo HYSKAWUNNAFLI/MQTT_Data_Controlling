@@ -1,4 +1,4 @@
-namespace mqttpetproject.Application.Exceptions;
+namespace mqttpetproject.Domain.Exceptions;
 
 public sealed class TransientPersistenceException : Exception
 {

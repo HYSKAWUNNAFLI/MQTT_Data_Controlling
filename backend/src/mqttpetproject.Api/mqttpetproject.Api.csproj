@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\mqttpetproject.Application\mqttpetproject.Application.csproj" />
     <ProjectReference Include="..\mqttpetproject.Infrastructure\mqttpetproject.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\rabbitmq\src\mqttpetproject.RabbitMqAdapter\mqttpetproject.RabbitMqAdapter.csproj" />
   </ItemGroup>
 
 </Project>

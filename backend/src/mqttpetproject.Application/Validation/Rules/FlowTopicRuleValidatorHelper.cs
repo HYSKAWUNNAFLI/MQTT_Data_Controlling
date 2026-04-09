@@ -1,3 +1,4 @@
+using mqttpetproject.Application.Validation;
 using mqttpetproject.Domain.Entities;
 
 namespace mqttpetproject.Application.Validation.Rules;

@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
-using mqttpetproject.Infrastructure.Configuration;
+using mqttpetproject.RabbitMqAdapter.Configuration;
 
-namespace mqttpetproject.Infrastructure.Messaging;
+namespace mqttpetproject.RabbitMqAdapter.Messaging;
 
 public sealed class RabbitMqConnectionFactory : IDisposable
 {

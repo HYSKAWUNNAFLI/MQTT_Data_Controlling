@@ -1,4 +1,4 @@
-namespace mqttpetproject.Infrastructure.Configuration;
+namespace mqttpetproject.Api.Configuration;
 
 public sealed class AppOptions
 {

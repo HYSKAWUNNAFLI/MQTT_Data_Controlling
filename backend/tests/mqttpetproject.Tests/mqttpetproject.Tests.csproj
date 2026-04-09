@@ -27,7 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\mqttpetproject.Application\mqttpetproject.Application.csproj" />
     <ProjectReference Include="..\..\src\mqttpetproject.Domain\mqttpetproject.Domain.csproj" />
-    <ProjectReference Include="..\..\src\mqttpetproject.Infrastructure\mqttpetproject.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

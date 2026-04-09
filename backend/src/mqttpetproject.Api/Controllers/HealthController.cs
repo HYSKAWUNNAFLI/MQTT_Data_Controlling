@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using mqttpetproject.Infrastructure.Configuration;
+using mqttpetproject.Api.Configuration;
 
 namespace mqttpetproject.Api.Controllers;
 

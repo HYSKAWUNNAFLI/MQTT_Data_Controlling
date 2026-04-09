@@ -1,52 +1,42 @@
-# mqttpetproject
+# mqttpetproject Backend
 
-ASP.NET Core Web API backend for smart-factory telemetry processing with RabbitMQ, MongoDB, and topic-based validation.
+ASP.NET Core Web API backend cho smart-factory telemetry processing.
 
-## What It Does
+## Trach Nhiem
 
-- Declares RabbitMQ topology in code on startup.
-- Consumes `factory.data.queue` via `BackgroundService`.
-- Validates telemetry payloads in two layers:
-  - schema validation
-  - topic-specific domain rules through strategy validators
-- Saves valid telemetry to MongoDB collection `telemetry_raw`.
-- Saves DLQ audit records to MongoDB collection `telemetry_dlq_audit`.
-- Returns `ACK`, `REJECT to DLQ`, or `NACK requeue` based on the processing result.
+- Cung cap Web API host va health endpoint.
+- Chua backend core de deserialize, validate va xu ly telemetry.
+- Validate schema va domain rule theo topic.
+- Luu telemetry hop le vao MongoDB.
+- Quyết dinh `ACK`, `REJECT to DLQ`, hoac `NACK requeue`.
 
-## RabbitMQ Topology
+## Cau Truc
 
-- Main exchange: `factory.data.exchange`
-- Main queue: `factory.data.queue`
-- Main routing key: `factory.telemetry`
-- DLX: `factory.data.dlx`
-- DLQ: `factory.data.dlq`
-- DLQ routing key: `factory.telemetry.dlq`
+- `src/mqttpetproject.Api`: Web API va composition root.
+- `src/mqttpetproject.Application`: contract, DTO, interface va business processing.
+- `src/mqttpetproject.Domain`: domain model, enum va shared exception.
+- `src/mqttpetproject.Infrastructure`: MongoDB persistence.
+- `tests/mqttpetproject.Tests`: Unit tests.
 
-The main queue is declared with:
+## Chay Backend Rieng
 
-- `x-dead-letter-exchange = factory.data.dlx`
-- `x-dead-letter-routing-key = factory.telemetry.dlq`
+Dung RabbitMQ broker tach rieng tren cong `5672` va MongoDB o `27017`.
 
-## Run Locally
-
-1. Copy `.env.example` to `.env` if you need a fresh local env file.
-2. Start the stack:
+1. Chuan bi bien moi truong theo `backend/.env.example`.
+2. Chay API:
 
 ```bash
-docker compose -f docker-compose.yaml up --build
+dotnet run --project src/mqttpetproject.Api
 ```
 
-3. Open:
-   - API: `http://localhost:8080`
-   - Swagger: `http://localhost:8080/swagger`
-   - RabbitMQ Management: `http://localhost:15672`
-
-## MQTT / Node-RED Assumption
-
-The compose setup enables the RabbitMQ MQTT plugin so Node-RED can connect to RabbitMQ on port `1883`. The backend itself still consumes from the AMQP queue `factory.data.queue`, so Node-RED or your broker-side routing must ensure the test payload ultimately reaches `factory.data.exchange` with routing key `factory.telemetry`.
-
-## Tests
+3. Chay test:
 
 ```bash
-dotnet test
+dotnet test mqttpetproject.sln
 ```
+
+## Ghi Chu
+
+RabbitMQ khong con nam trong `backend/src`.
+Adapter RabbitMQ bang C#/.NET da duoc tach sang [rabbitmq/](/Users/ductranphamminh/Documents/VNTT/mqttpetproject/rabbitmq).
+Topology multi-exchange va multi-queue duoc cau hinh trong `src/mqttpetproject.Api/appsettings*.json`.
